@@ -2,13 +2,15 @@ setwd("C:/Users/Pablo/Documents/Assignment-2-Lexical-Scoping")
 rm(list = ls())
 cat("\014")
 
+## There are two functions makeCacheMatrix and cachesolve
+
 makeCacheMatrix <- function(x = matrix()) {
   inv <- NULL
   set <- function(y) {
     x <<- y
     inv <<- NULL
   }
-  get <- function() x
+  get <- function() x  ## This Function gets Matrix X
   setinverse <- function(inverse) i <<- inverse
   getinverse <- function() inv
   list(set = set,
@@ -17,6 +19,7 @@ makeCacheMatrix <- function(x = matrix()) {
        getinverse = getinverse)
 }
 
+## This function gets the cache data
 
 cacheSolve <- function(x, ...) {
   inv <- x$getinverse()
@@ -30,6 +33,7 @@ cacheSolve <- function(x, ...) {
   i
 }
 
+## This is a test of the code and its result
 D <- matrix(c(4,5,6,7),2,2)
 D1 <- makeCacheMatrix(D)
 cacheSolve(D1)
